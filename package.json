@@ -1,22 +1,13 @@
 {
-    "name": "cache",
-    "version": "1",
-    "description": "cache",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js"
-    },
-    "dependencies": {
-        "ffmpeg": "^0.0.4",
-        "ffmpeg-static": "^5.0.2",
-        "fs": "^0.0.1-security",
-        "random-youtube-music-video": "^1.0.6",
-        "random-youtube-video-by-keyword": "^1.0.7",
-        "youtube-mp3-converter": "^1.0.3",
-        "youtube-scrapper": "^1.4.0",
-        "yt-converter": "^1.3.2",
-        "yt-dl-playlist": "^2.1.0",
-        "ytdl": "^1.4.1",
-        "ytdl-core": "^4.10.0"
-    }
+  "name": "discordjs-musicbot",
+  "version": "1",
+  "description": "discord bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "start": "node index.js"
+  "dependencies": {
+      "express": "^4.18.1"
+       }
 }
