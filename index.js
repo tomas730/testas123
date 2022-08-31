@@ -4,15 +4,13 @@ const app = express();
 const bodyParser = require("body-parser")
 app.use(express.static(__dirname + '/views'));
 
-app.set('view-engine', 'ejs')
-
 app.get("/", async function(req, res) {
-
+res.send("te")
 //res.render('home.ejs')
-res.sendFile(__dirname + "./views/index.html")
+//res.sendFile(__dirname + "./views/index.html")
 // res.redirect("/")
 })
 
-app.listen(443, function() {
-    console.log("server on 443 port")
+app.listen(3000, function() {
+    console.log("server on 3000 port")
 })
