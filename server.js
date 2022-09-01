@@ -11,9 +11,23 @@ app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
 
   app.post('/', async (req, res) => {
-      res.sendFile(__dirname + "./views/error.html")
+      //res.sendFile(__dirname + "./views/error.html")
     try{
-mongoose.connect(mongoDB_URI).then(res.send("on"))
+mongoose.connect(mongoDB_URI)
+  const dbSchema = {
+    id: {
+        type: String,
+        require: true,
+    },
+    url: {
+        type: String,
+        require: true,
+    }
+}
+const db = mongoose.model("id", dbSchema)
+  const b = await db.findOne({id:`${req.body.upvote}`})
+  res.send(b)
+ // .then(res.send("on"))
     } catch(e) {
       console.error(e)
     }
