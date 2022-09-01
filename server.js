@@ -11,15 +11,41 @@ app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
 
 try{
-}
-catch(e) {
-console.log(e)
     mongoose.connect("'"+mongoose.env.mongoose + "'")
 }
+catch(e) {
+res.send(e)
+}
+
+//test
+const dbSchema = {
+    id: {
+        type: String,
+        require: true,
+    },
+    url: {
+        type: String,
+        require: true,
+    }
+}
+const db = mongoose.model("id", dbSchema)
+  app.post('/', async (req, res) => {
+
+    console.log(req.body.upvote)
+    console.log(req.body.option)
+
+    const b = await db.findOne({id:`${req.body.upvote}`})
+    if(!b || b === "null") {
+      res.sendFile(__dirname + "/views/error.html")
+      return;
+  }
+  })
+//test
 
 app.get("/", async function(req, res) {
 //res.sendFile(__dirname + "/views/index.html")
-res.render("home.ejs")
+res.send(mongoose.env.mongoose)
+//res.render("home.ejs")
 })
 
 app.listen(3000, function() {
