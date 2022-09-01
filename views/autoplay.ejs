@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./autoplay.css">
+  <title>Player</title>
+</head>
+
+<body>
+  <h1>ID: JJ</h1>
+  <button onclick="play()">PLAY</button>
+  <button onclick="pause()">PAUSE</button>
+  <div class="podPlay">
+    <div class='podContainer'>
+      <div class="player">
+        <audio class="trackPlaying" controls controlsList="nodownload" src="" onloadstart="this.volume=0.4"> </audio>
+      </div>
+      <div class="playList">
+        <p class='tracks '>0. <%= name %> <span class="audioLinks">../downloads/<%= id %>.mp3</span></p>
+        <p class='tracks '>1. <%= name1 %> <span class="audioLinks">../downloads/from-autoplay/<%= id1 %>.mp3</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="./autoplay.js"></script>
+</body>
+
+</html>
