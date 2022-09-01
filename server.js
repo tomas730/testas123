@@ -9,7 +9,7 @@ const path = require("path")
 app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
 
-mongoose.connect(process.env.MONGODB)
+//mongoose.connect(process.env.MONGODB)
 
 
   app.post('/', async (req, res) => {
