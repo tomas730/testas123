@@ -5,13 +5,13 @@ const fs = require('fs');
 const ytdl = require('ytdl-core');
 const youtube = require("random-youtube-video-by-keyword")
 const path = require("path")
-const key = process.env.key
+
 
 app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
 
 try{
-    mongoose.connect("'"+mongoose.env.mongoose + "'")
+    //mongoose.connect("'"+mongoose.env.mongoose + "'")
 }
 catch(e) {
 res.send(e)
@@ -28,23 +28,15 @@ const dbSchema = {
         require: true,
     }
 }
-const db = mongoose.model("id", dbSchema)
   app.post('/', async (req, res) => {
-
     console.log(req.body.upvote)
     console.log(req.body.option)
-
-    const b = await db.findOne({id:`${req.body.upvote}`})
-    if(!b || b === "null") {
-      res.sendFile(__dirname + "/views/error.html")
-      return;
-  }
   })
 //test
 
 app.get("/", async function(req, res) {
 //res.sendFile(__dirname + "/views/index.html")
-res.send(mongoose.env.mongoose)
+res.send(mongoose.env.MONGODB)
 //res.render("home.ejs")
 })
 
