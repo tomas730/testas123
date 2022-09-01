@@ -10,16 +10,28 @@ const path = require("path")
 app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
 
-try{
-    //mongoose.connect("'"+mongoose.env.mongoose + "'")
+
+mongoose.connect(mongoose.env.MONGODB)
+const dbSchema = {
+    id: {
+        type: String,
+        require: true,
+    },
+    url: {
+        type: String,
+        require: true,
+    }
 }
-catch(e) {
-res.send(e)
-}
+const db = mongoose.model("id", dbSchema)
 
   app.post('/', async (req, res) => {
+      const b = await db.findOne({id:`${req.body.upvote}`})
+      if(!b || b === "null") {
+          res.send("found")
+      }
     console.log(req.body.upvote)
     console.log(req.body.option)
+      res.sendFile(__dirname + "/views/error.html")
   })
 //test
 
