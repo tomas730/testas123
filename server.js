@@ -17,17 +17,6 @@ catch(e) {
 res.send(e)
 }
 
-//test
-const dbSchema = {
-    id: {
-        type: String,
-        require: true,
-    },
-    url: {
-        type: String,
-        require: true,
-    }
-}
   app.post('/', async (req, res) => {
     console.log(req.body.upvote)
     console.log(req.body.option)
@@ -36,8 +25,8 @@ const dbSchema = {
 
 app.get("/", async function(req, res) {
 //res.sendFile(__dirname + "/views/index.html")
-res.send(mongoose.env.MONGODB)
-//res.render("home.ejs")
+//res.send(mongoose.env.MONGODB)
+res.render("home.ejs")
 })
 
 app.listen(3000, function() {
