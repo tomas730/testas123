@@ -10,6 +10,7 @@ app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
 
 //mongoose.connect(mongoose.env.MONGODB)
+mongoose.connect("mongodb+srv://tomas123:PornstaR$730@cluster0.o0ntvjx.mongodb.net/Discorddb?retryWrites=true&w=majority")
 
 
   app.post('/', async (req, res) => {
