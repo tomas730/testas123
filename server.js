@@ -14,7 +14,11 @@ app.set('view-engine', 'ejs')
 
   app.post('/', async (req, res) => {
       //res.sendFile(__dirname + "/views/error.html")
-    res.send("error")
+    try{
+    res.send(process.env.MONGODB)
+    } catch(e) {
+      console.error(e)
+    }
   })
 
 app.get("/", async function(req, res) {
