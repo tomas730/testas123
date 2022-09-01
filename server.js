@@ -9,12 +9,12 @@ const path = require("path")
 app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
 
-//mongoose.connect(mongoose.env.MONGODB)
-mongoose.connect("mongodb+srv://tomas123:PornstaR$730@cluster0.o0ntvjx.mongodb.net/Discorddb?retryWrites=true&w=majority")
+mongoose.connect(process.env.MONGODB)
 
 
   app.post('/', async (req, res) => {
-      res.sendFile(__dirname + "/views/error.html")
+      //res.sendFile(__dirname + "/views/error.html")
+    res.send("error")
   })
 
 app.get("/", async function(req, res) {
