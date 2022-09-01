@@ -2,7 +2,7 @@ const express = require('express')
 const app = express();
 
 app.get("/", async function(req, res) {
-res.send("te")
+res.sendFile(__dirname + "/views/index.html")
 })
 
 app.listen(3000, function() {
