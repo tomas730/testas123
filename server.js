@@ -8,12 +8,13 @@ const path = require("path")
 const key = process.env.key
 
 app.use(express.static(__dirname + '/views'));
+mongoose.connect(process.env.mongoose)
 
 app.set('view-engine', 'ejs')
 
 app.get("/", async function(req, res) {
 //res.sendFile(__dirname + "/views/index.html")
-res.render("index.ejs")
+res.render("home.ejs")
 })
 
 app.listen(3000, function() {
