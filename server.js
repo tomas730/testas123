@@ -26,7 +26,7 @@ mongoose.connect(mongoDB_URI)
 }
 const db = mongoose.model("id", dbSchema)
   const b = await db.findOne({id:`${req.body.upvote}`})
-  res.send(b)
+  res.send(b + "here")
  // .then(res.send("on"))
     } catch(e) {
       console.error(e)
