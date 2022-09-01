@@ -8,7 +8,6 @@ const path = require("path")
 const key = process.env.key
 
 app.use(express.static(__dirname + '/views'));
-mongoose.connect(process.env.mongoose)
 
 app.set('view-engine', 'ejs')
 
