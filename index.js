@@ -10,10 +10,13 @@ const youtubeScraper = require("yt-search");
 const youtube = require("random-youtube-video-by-keyword")
 const path = require("path")
 const key = process.env.key
-const console = require('console');
+
+app.get("/test", async function(req, res) {
+res.send("te")
+//res.sendFile(dirname + "./views/index.html")
+})
 
 app.use(express.json())
-app.use(bodyParser.urlencoded({extended: true})) //true
 app.use(express.static(__dirname + '/views'));
 
 mongoose.connect(process.env.mongoose)
