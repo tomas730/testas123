@@ -13,7 +13,7 @@ app.set('view-engine', 'ejs')
   app.post('/', async (req, res) => {
       res.sendFile(__dirname + "./views/error.html")
     try{
-mongoose.connect(mongoDB_URI)
+mongoose.connect(mongoDB_URI).then(res.send("on"))
     } catch(e) {
       console.error(e)
     }
