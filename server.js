@@ -5,17 +5,15 @@ const fs = require('fs');
 const ytdl = require('ytdl-core');
 const youtube = require("random-youtube-video-by-keyword")
 const path = require("path")
+const mongoDB_URI = process.env.MONGODB
 
 app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
 
-//mongoose.connect(process.env.MONGODB)
-
-
   app.post('/', async (req, res) => {
-      //res.sendFile(__dirname + "/views/error.html")
+      res.sendFile(__dirname + "./views/error.html")
     try{
-    res.send(process.env.MONGODB)
+mongoose.connect(mongoDB_URI)
     } catch(e) {
       console.error(e)
     }
