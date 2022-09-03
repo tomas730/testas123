@@ -7,6 +7,7 @@ const fs = require('fs');
 const ytdl = require('ytdl-core');
 const youtube = require("random-youtube-video-by-keyword")
 const path = require("path")
+const console = require('console');
 
 app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
@@ -15,11 +16,13 @@ const uri = process.env.mongodb_URI;
 
 try {
 require("dotenv").config();
-console.log("1 " + process.env.mongodb_URI)
+console.log("1 " + uri)
 let test = [];
-test.push(process.env.mongodb_URI)
+test.push(uri)
 console.log(test)
-} catch (e) console.error(e);
+} catch (e) {
+  console.log(e)
+            }
 
   app.post('/', async (req, res) => {
       //res.sendFile(__dirname + "./views/error.html")
