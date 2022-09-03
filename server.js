@@ -12,10 +12,10 @@ const console = require('console');
 app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
 
-fs.writeFile('txt.txt',"content", function (err) {
-  if (err) throw err;
-  console.log('File is created successfully.');
-})
+// fs.writeFile('txt.txt',"content", function (err) {
+//   if (err) throw err;
+//   console.log('File is created successfully.');
+// })
 
 const uri = process.env.mongodb_URI;
 try {
@@ -26,13 +26,24 @@ test.push({
   testas:uri
 })
 console.log(test[0].testas)
+   mongoose.connect(test[0].testas)
+  .then(() => {
+    console.info("Connected to the database");
+  })
+  .catch(err => {
+    console.info("Cannot connect to the database!", err);
+    process.exit();
+  });
+  
+  
+  
 } catch (e) {
   console.log(e)
             }
-
+fs.createWriteStream('./views/test.txt')
   app.post('/', async (req, res) => {
       //res.sendFile(__dirname + "./views/error.html")
-//        mongoose.connect(process.env.mongodb_URI)
+//    mongoose.connect(process.env.mongodb_URI)
 //   .then(() => {
 //     console.info("Connected to the database");
 //   })
