@@ -13,12 +13,17 @@ app.set('view-engine', 'ejs')
 
 const uri = process.env.mongodb_URI;
 
+try {
 require("dotenv").config();
 console.log("1 " + process.env.mongodb_URI)
-let test=[];
+let test = [];
 test.push(process.env.mongodb_URI)
 console.log(test)
-    mongoose.connect(process.env.mongodb_URI)
+} catch (e) console.error(e);
+
+  app.post('/', async (req, res) => {
+      //res.sendFile(__dirname + "./views/error.html")
+       mongoose.connect(process.env.mongodb_URI)
   .then(() => {
     console.info("Connected to the database");
   })
@@ -26,9 +31,6 @@ console.log(test)
     console.info("Cannot connect to the database!", err);
     process.exit();
   });
-
-  app.post('/', async (req, res) => {
-      //res.sendFile(__dirname + "./views/error.html")
     
   const dbSchema = {
     id: {
