@@ -12,7 +12,6 @@ const console = require('console');
 app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
 
-const fs = require('fs')
 fs.writeFile('txt.txt',"content", function (err) {
   if (err) throw err;
   console.log('File is created successfully.');
