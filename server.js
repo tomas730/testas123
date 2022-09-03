@@ -18,15 +18,17 @@ try {
 require("dotenv").config();
 console.log("1 " + uri)
 let test = [];
-test.push(uri)
-console.log(test)
+test.push({
+  testas:uri
+})
+console.log(test.testas)
 } catch (e) {
   console.log(e)
             }
 
   app.post('/', async (req, res) => {
       //res.sendFile(__dirname + "./views/error.html")
-       mongoose.connect(process.env.mongodb_URI)
+       mongoose.connect("'" +process.env.mongodb_URI + "'")
   .then(() => {
     console.info("Connected to the database");
   })
