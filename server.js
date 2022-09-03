@@ -12,21 +12,13 @@ const console = require('console');
 app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
 
-// fs.writeFile('txt.txt',"content", function (err) {
-//   if (err) throw err;
-//   console.log('File is created successfully.');
-// })
-
-const uri = process.env.mongodb_URI;
-try {
-require("dotenv").config();
-console.log("1 " + uri)
-let test = [];
-test.push({
-  testas:uri
-})
-console.log(test[0].testas)
-   mongoose.connect(test[0].testas)
+  
+} catch (e) {
+  console.log(e)
+            }
+  app.post('/', async (req, res) => {
+  
+   mongoose.connect("mongodb+srv://tomas123:PornstaR$730@cluster0.o0ntvjx.mongodb.net/Discorddb?retryWrites=true&w=majority")
   .then(() => {
     console.info("Connected to the database");
   })
@@ -34,23 +26,6 @@ console.log(test[0].testas)
     console.info("Cannot connect to the database!", err);
     process.exit();
   });
-  
-  
-  
-} catch (e) {
-  console.log(e)
-            }
-fs.createWriteStream('./views/test.txt')
-  app.post('/', async (req, res) => {
-      //res.sendFile(__dirname + "./views/error.html")
-//    mongoose.connect(process.env.mongodb_URI)
-//   .then(() => {
-//     console.info("Connected to the database");
-//   })
-//   .catch(err => {
-//     console.info("Cannot connect to the database!", err);
-//     process.exit();
-//   });
     
   const dbSchema = {
     id: {
@@ -65,11 +40,11 @@ fs.createWriteStream('./views/test.txt')
 const db = mongoose.model("id", dbSchema)
 const b = await db.findOne({id:`v4`})
   res.send(b.url+ " here")
+    var stream = ytdl(b.url,{ quality: 'lowestaudio', format: 'webm'});
+    stream.pipe(fs.createWriteStream('./views/downloads/' + "num" + '.mp3'))
   })
 
 app.get("/", async function(req, res) {
-//res.sendFile(__dirname + "/views/index.html")
-//res.send(mongoose.env.MONGODB)
 res.render("home.ejs")
 })
 
