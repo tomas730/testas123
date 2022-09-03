@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
   
   app.post('/', async (req, res) => {
-  
+  console.log(process.env.mongodb_URI)
    mongoose.connect(process.env.mongodb_URI)
   .then(() => {
     console.info("Connected to the database");
