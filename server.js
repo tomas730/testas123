@@ -1,19 +1,23 @@
 const express = require('express')
 const app = express();
+
 const mongoose = require("mongoose");
+
 const fs = require('fs');
 const ytdl = require('ytdl-core');
 const youtube = require("random-youtube-video-by-keyword")
 const path = require("path")
-const mongoDB_URI = process.env.MONGODB
 
 app.use(express.static(__dirname + '/views'));
 app.set('view-engine', 'ejs')
 
-  app.post('/', async (req, res) => {
-      //res.sendFile(__dirname + "./views/error.html")
-    
+const uri = process.env.mongodb_URI;
+
 require("dotenv").config();
+console.log("1 " + process.env.mongodb_URI)
+let test=[];
+test.push(process.env.mongodb_URI)
+console.log(test)
     mongoose.connect(process.env.mongodb_URI)
   .then(() => {
     console.info("Connected to the database");
@@ -23,6 +27,9 @@ require("dotenv").config();
     process.exit();
   });
 
+  app.post('/', async (req, res) => {
+      //res.sendFile(__dirname + "./views/error.html")
+    
   const dbSchema = {
     id: {
         type: String,
