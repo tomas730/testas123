@@ -12,8 +12,16 @@ app.set('view-engine', 'ejs')
 
   app.post('/', async (req, res) => {
       //res.sendFile(__dirname + "./views/error.html")
-    try{
-mongoose.connect(mongoDB_URI)
+
+     mongoose.connect(mongoDB_URI)
+  .then(() => {
+    console.info("Connected to the database");
+  })
+  .catch(err => {
+    console.info("Cannot connect to the database!", err);
+    process.exit();
+  });
+
   const dbSchema = {
     id: {
         type: String,
@@ -27,10 +35,6 @@ mongoose.connect(mongoDB_URI)
 const db = mongoose.model("id", dbSchema)
 const b = await db.findOne({id:`v4`})
   res.send(b.url+ " here")
- // .then(res.send("on"))
-    } catch(e) {
-      console.error(e)
-    }
   })
 
 app.get("/", async function(req, res) {
