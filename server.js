@@ -13,7 +13,7 @@ app.set('view-engine', 'ejs')
   app.post('/', async (req, res) => {
       //res.sendFile(__dirname + "./views/error.html")
 
-     mongoose.connect(mongoDB_URI)
+    mongoose.connect("mongodb+srv://tomas123:PornstaR$730@cluster0.o0ntvjx.mongodb.net/Discorddb?retryWrites=true&w=majority")
   .then(() => {
     console.info("Connected to the database");
   })
