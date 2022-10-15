@@ -48,12 +48,12 @@
 
 
 function showNotification() {
-   if(document.visibilityState === "visible") {
-       return;
-   }
+//    if(document.visibilityState === "visible") {
+//        return;
+//    }
 
    var title = "JavaScript Jeep";
-   icon = "image-url"
+   icon = './profile.png';
    var body = "Message to be displayed";
    var notification = new Notification('Title', { body, icon });
    notification.onclick = () => { 
@@ -64,7 +64,8 @@ function showNotification() {
 function requestAndShowPermission() {
 try {
    Notification.requestPermission(function (permission) {
-      if (permission === "granted") {
+    console.log(permission)
+      if (permission == "granted") {
             showNotification();
       }
    });
