@@ -39,6 +39,10 @@ app.set('view-engine', 'ejs')
 //     stream.pipe(fs.createWriteStream('./views/' + "num" + '.mp3'))
   })
 
+app.get("/cache", async function(req, res) {
+res.sendFile(__dirname + '/views/cache.html')
+})
+
 app.get("/", async function(req, res) {
 res.render("home.ejs")
 })
