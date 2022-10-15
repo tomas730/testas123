@@ -9,12 +9,9 @@
 <body>
 <p>TEST</p>
 <button onclick="requestAndShowPermission()">Click</button>
-<p>Click</p>
+<p>Click the button</p>
+
     <script>
-
-
-
-
 
 // if(permission === "granted") {
 //    showNotification();
@@ -52,7 +49,6 @@ function showNotification() {
 //        return;
 //    }
 
-   var title = "JavaScript Jeep";
    icon = './profile.png';
    var body = "Message to be displayed";
    var notification = new Notification('Title', { body, icon });
@@ -65,7 +61,7 @@ function requestAndShowPermission() {
 try {
    Notification.requestPermission(function (permission) {
     console.log(permission)
-      if (permission == "granted") {
+      if (permission === "granted") {
             showNotification();
       }
    });
